@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Assignment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f9;
+        }
+
+        .card-container {
+            display: grid;
+            /* Use grid for layout */
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            /* Adjusts column count dynamically */
+            gap: 20px;
+            /* Consistent gap between cards */
+            width: 95%;
+            /* Container takes 95% of the screen width */
+            margin: 20px 0;
+            box-sizing: border-box;
+            /* Includes padding/border in size calculation */
+        }
+
+        .box {
+            min-height: 150px;
+            background-color: #4caf50;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .box-header {
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+            width: 100%;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        select {
+            width: 100%;
+            padding: 3px;
+            font-size: 12px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .assignment {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            /* Aligns label and value on the same baseline */
+            margin: 10px 0;
+            /* Adds spacing between each line */
+        }
+
+        .label {
+            font-weight: bold;
+            text-align: left;
+            flex: 1;
+        }
+
+        .value {
+            text-align: right;
+            font-weight: normal;
+            flex: 1;
+            white-space: nowrap;
+            /* Prevents text wrapping */
+        }
+
+        .task-summary,
+        .rules-summary {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+            /* Add a separator */
+            font-size: 14px;
+            color: #333;
+        }
+
+        .task-summary,
+        .rules-summary p {
+            margin: 5px 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+
+        .person-card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            width: 150px;
+            text-align: center;
+        }
+
+        .person-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .day-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+        }
+
+        .days-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .task {
+            margin-bottom: 10px;
+        }
+
+        select {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Task Assignment</h1>
+
+    <div class="person-container">
+        <div class="person-card" id="person-A">
+            <h3>Ariel</h3>
+            <p>Everybody: <span class="everybody">None</span></p>
+            <br>
+            <div class="tasks">
+                <p>Opening: None</p>
+                <p>Late: None</p>
+                <p>Matinee: None</p>
+                <p>Closing: None</p>
+            </div>
+            <br>
+            <div class="task-summary">
+                <p>Total Roles: <span class="total-tasks">0</span></p>
+                <p>Roles: <span class="unique-tasks"></span></p>
+            </div>
+            <div class="rules-summary">
+                <p>Max: 3</p>
+                <p>Pref: Friendship, Stuff</p>
+                <p>Not: Cousin</p>
+                <p>Any show</p>
+            </div>
+        </div>
+        <div class="person-card" id="person-B">
+            <h3>Condredge</h3>
+            <p>Everybody: <span class="everybody">None</span></p>
+            <br>
+            <div class="tasks">
+                <p>Opening: None</p>
+                <p>Late: None</p>
+                <p>Matinee: None</p>
+                <p>Closing: None</p>
+            </div>
+            <br>
+            <div class="task-summary">
+                <p>Total Roles: <span class="total-tasks">0</span></p>
+                <p>Roles: <span class="unique-tasks"></span></p>
+            </div>
+            <div class="rules-summary">
+                <p>Max: 4</p>
+                <p>Pref: Cousin, Friendship</p>
+                <p>Not: Kinship</p>
+                <p>Any show</p>
+            </div>
+        </div>
+        <div class="person-card" id="person-C">
+            <h3>Lisset</h3>
+            <p>Everybody: <span class="everybody">None</span></p>
+            <br>
+            <div class="tasks">
+                <p>Opening: None</p>
+                <p>Late: None</p>
+                <p>Matinee: None</p>
+                <p>Closing: None</p>
+            </div>
+            <br>
+            <div class="task-summary">
+                <p>Total Roles: <span class="total-tasks">0</span></p>
+                <p>Roles: <span class="unique-tasks"></span></p>
+            </div>
+            <div class="rules-summary">
+                <p>Max: 3</p>
+                <p>Pref: Friendship, Cousin</p>
+                <p>Not: none</p>
+                <p>Not Late show</p>
+            </div>
+        </div>
+        <div class="person-card" id="person-D">
+            <h3>Maria</h3>
+            <p>Everybody: <span class="everybody">None</span></p>
+            <br>
+            <div class="tasks">
+                <p>Opening: None</p>
+                <p>Late: None</p>
+                <p>Matinee: None</p>
+                <p>Closing: None</p>
+            </div>
+            <br>
+            <div class="task-summary">
+                <p>Total Roles: <span class="total-tasks">0</span></p>
+                <p>Roles: <span class="unique-tasks"></span></p>
+            </div>
+            <div class="rules-summary">
+                <p>Max: 3</p>
+                <p>Pref: none</p>
+                <p>Not: Kinship</p>
+                <p>Not Late show</p>
+            </div>
+        </div>
+        <div class="person-card" id="person-E">
+            <h3>Sam</h3>
+            <p>Everybody: <span class="everybody">None</span></p>
+            <br>
+            <div class="tasks">
+                <p>Opening: None</p>
+                <p>Late: None</p>
+                <p>Matinee: None</p>
+                <p>Closing: None</p>
+            </div>
+            <br>
+            <div class="task-summary">
+                <p>Total Roles: <span class="total-tasks">0</span></p>
+                <p>Roles: <span class="unique-tasks"></span></p>
+            </div>
+            <div class="rules-summary">
+                <p>Max: 4</p>
+                <p>Pref: Stuff, Cousin, Kinship,</p>
+                <p>Not: Friendship</p>
+                <p>Any show</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="days-container">
+        <div class="day-box" id="opening">
+            <h3>Opening</h3>
+            <div class="task">Everybody: <select data-day="Opening" data-task="Everybody"></select></div>
+            <br>
+            <br>
+            <div class="task">Friendship: <select data-day="Opening" data-task="Friendship"></select></div>
+            <div class="task">Strength: <select data-day="Opening" data-task="Strength"></select></div>
+            <div class="task">Kinship: <select data-day="Opening" data-task="Kinship"></select></div>
+            <div class="task">Beauty: <select data-day="Opening" data-task="Beauty"></select></div>
+            <div class="task">Cousin: <select data-day="Opening" data-task="Cousin"></select></div>
+            <div class="task">Mind: <select data-day="Opening" data-task="Mind"></select></div>
+            <div class="task">Stuff: <select data-day="Opening" data-task="Stuff"></select></div>
+            <div class="task">Senses: <select data-day="Opening" data-task="Senses"></select></div>
+            <br>
+            <br>
+            <div class="task">A: <select data-day="Opening" data-task="A"></select></div>
+            <div class="task">B: <select data-day="Opening" data-task="B"></select></div>
+            <div class="task">C: <select data-day="Opening" data-task="C"></select></div>
+            <div class="task">D: <select data-day="Opening" data-task="D"></select></div>
+        </div>
+        <div class="day-box" id="late">
+            <h3>Late</h3>
+            <div class="task">Everybody:<select data-day="Late" data-task="Everybody"></select></div>
+            <br>
+            <br>
+            <div class="task">Friendship: <select data-day="Late" data-task="Friendship"></select></div>
+            <div class="task">Strength: <select data-day="Late" data-task="Strength"></select></div>
+            <div class="task">Kinship: <select data-day="Late" data-task="Kinship"></select></div>
+            <div class="task">Beauty: <select data-day="Late" data-task="Beauty"></select></div>
+            <div class="task">Cousin: <select data-day="Late" data-task="Cousin"></select></div>
+            <div class="task">Mind: <select data-day="Late" data-task="Mind"></select></div>
+            <div class="task">Stuff: <select data-day="Late" data-task="Stuff"></select></div>
+            <div class="task">Senses: <select data-day="Late" data-task="Senses"></select></div>
+            <br>
+            <br>
+            <div class="task">A: <select data-day="Late" data-task="A"></select></div>
+            <div class="task">B: <select data-day="Late" data-task="B"></select></div>
+            <div class="task">C: <select data-day="Late" data-task="C"></select></div>
+            <div class="task">D: <select data-day="Late" data-task="D"></select></div>
+        </div>
+        <div class="day-box" id="matinee">
+            <h3>Matinee</h3>
+            <div class="task">Everybody:<select data-day="Matinee" data-task="Everybody"></select></div>
+            <br>
+            <br>
+            <div class="task">Friendship: <select data-day="Matinee" data-task="Friendship"></select></div>
+            <div class="task">Strength: <select data-day="Matinee" data-task="Strength"></select></div>
+            <div class="task">Kinship: <select data-day="Matinee" data-task="Kinship"></select></div>
+            <div class="task">Beauty: <select data-day="Matinee" data-task="Beauty"></select></div>
+            <div class="task">Cousin: <select data-day="Matinee" data-task="Cousin"></select></div>
+            <div class="task">Mind: <select data-day="Matinee" data-task="Mind"></select></div>
+            <div class="task">Stuff: <select data-day="Matinee" data-task="Stuff"></select></div>
+            <div class="task">Senses: <select data-day="Matinee" data-task="Senses"></select></div>
+            <br>
+            <br>
+            <div class="task">A: <select data-day="Matinee" data-task="A"></select></div>
+            <div class="task">B: <select data-day="Matinee" data-task="B"></select></div>
+            <div class="task">C: <select data-day="Matinee" data-task="C"></select></div>
+            <div class="task">D: <select data-day="Matinee" data-task="D"></select></div>
+        </div>
+        <div class="day-box" id="closing">
+            <h3>Closing</h3>
+            <div class="task">Everybody:<select data-day="Closing" data-task="Everybody"></select></div>
+            <br>
+            <br>
+            <div class="task">Friendship: <select data-day="Closing" data-task="Friendship"></select></div>
+            <div class="task">Strength: <select data-day="Closing" data-task="Strength"></select></div>
+            <div class="task">Kinship: <select data-day="Closing" data-task="Kinship"></select></div>
+            <div class="task">Beauty: <select data-day="Closing" data-task="Beauty"></select></div>
+            <div class="task">Cousin: <select data-day="Closing" data-task="Cousin"></select></div>
+            <div class="task">Mind: <select data-day="Closing" data-task="Mind"></select></div>
+            <div class="task">Stuff: <select data-day="Closing" data-task="Stuff"></select></div>
+            <div class="task">Senses: <select data-day="Closing" data-task="Senses"></select></div>
+            <br>
+            <br>
+            <div class="task">A: <select data-day="Closing" data-task="A"></select></div>
+            <div class="task">B: <select data-day="Closing" data-task="B"></select></div>
+            <div class="task">C: <select data-day="Closing" data-task="C"></select></div>
+            <div class="task">D: <select data-day="Closing" data-task="D"></select></div>
+        </div>
+        <!-- Repeat for other days -->
+    </div>
+
+    <script>
+        // Define names for display
+        const peopleNames = ['Ariel', 'Condredge', 'Lisset', 'Maria', 'Sam'];
+        // Mapping peopleNames to corresponding person identifiers (A, B, C, D, E)
+        const people = ['A', 'B', 'C', 'D', 'E'];
+        const days = ['Opening', 'Late', 'Matinee', 'Closing'];
+        const tasks = ['Everybody', 'Friendship', 'Strength', 'Kinship', 'Beauty', 'Cousin', 'Mind', 'Stuff', 'Senses', 'A', 'B', 'C', 'D'];
+
+        // Initialize dropdowns for all tasks
+        document.querySelectorAll('select').forEach(select => {
+            const defaultOption = document.createElement('option');
+            defaultOption.value = 'tbd';
+            defaultOption.textContent = 'TBD';
+            select.appendChild(defaultOption);
+
+            // Create options for people using their names
+            people.forEach((person, index) => {
+                const option = document.createElement('option');
+                option.value = person;  // Keep the 'person' ID for internal use
+                option.textContent = peopleNames[index];  // Display actual names
+                select.appendChild(option);
+            });
+
+            // Listen for changes in each dropdown
+            select.addEventListener('change', event => {
+                const selectedPerson = event.target.value;
+                const day = event.target.getAttribute('data-day');
+                const task = event.target.getAttribute('data-task');
+                updateAssignments(selectedPerson, day, task);
+                updateTotals();
+            });
+        });
+
+        function updateAssignments(selectedPerson, day, task) {
+            // Clear previous assignments
+            people.forEach(person => {
+                const personCard = document.getElementById(`person-${person}`);
+                const tasksDiv = personCard.querySelector('.tasks');
+
+                // Remove everybody assignment if task is everybody
+                if (task === 'Everybody') {
+                    const everybodySpan = personCard.querySelector('.everybody');
+                    if (everybodySpan.textContent === day) {
+                        everybodySpan.textContent = 'None';
+                    }
+                }
+
+                // Clear specific day task if assigned to this person
+                const taskText = Array.from(tasksDiv.querySelectorAll('p')).find(p => p.textContent.startsWith(`${day}:`));
+                if (taskText && taskText.textContent.includes(task)) {
+                    taskText.textContent = `${day}: None`;
+                }
+            });
+
+            // Assign new tasks to the selected person
+            if (selectedPerson !== 'tbd') {
+                const personCard = document.getElementById(`person-${selectedPerson}`);
+                const tasksDiv = personCard.querySelector('.tasks');
+
+                if (task === 'Everybody') {
+                    const everybodySpan = personCard.querySelector('.everybody');
+                    everybodySpan.textContent = day;
+                } else {
+                    const dayTask = Array.from(tasksDiv.querySelectorAll('p')).find(p => p.textContent.startsWith(`${day}:`));
+                    if (dayTask && dayTask.textContent.includes('None')) {
+                        dayTask.textContent = `${day}: ${task}`;
+                    } else if (dayTask) {
+                        dayTask.textContent += `, ${task}`;
+                    }
+                }
+            }
+        }
+
+        function updateTotals() {
+            document.querySelectorAll('.person-card').forEach(card => {
+                // Collect all task strings from the tasks section
+                const taskElements = card.querySelectorAll('.tasks p');
+                let allTasks = [];
+
+                taskElements.forEach(taskElement => {
+                    const taskText = taskElement.textContent.split(': ')[1]; // Extract tasks after the colon
+                    if (taskText && taskText !== "None") {
+                        allTasks = allTasks.concat(taskText.split(', ').map(task => task.trim()));
+                    }
+                });
+
+                // Filter out duplicates and count total tasks
+                const uniqueTasks = [...new Set(allTasks)];
+
+                // Check if task summary already exists and update it, otherwise create a new one
+                let taskSummary = card.querySelector('.task-summary');
+                if (!taskSummary) {
+                    taskSummary = document.createElement('div');
+                    taskSummary.classList.add('task-summary');
+                    card.appendChild(taskSummary); // Append only if it doesn't exist
+                }
+
+                // Update the content of the task summary
+                taskSummary.innerHTML = `
+                    <p>Total Roles: <span class="total-tasks">${uniqueTasks.length}</span></p>
+                    <p>Roles: <span class="unique-tasks">${uniqueTasks.join(', ')}</span></p>
+                `;
+            });
+        }
+    </script>
+
+</body>
+
+</html>
